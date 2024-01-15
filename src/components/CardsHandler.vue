@@ -48,9 +48,9 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <main class="px-4 py-6 mt-3">
+  <main class="px-12 py-6 mt-3">
     <div class="container my-0 mx-auto transition-all duration-200 text-white">
-      <div class="grid grid-cols-3 gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
         <Card :project="project" v-for="project in apiData" />
       </div>
     </div>
