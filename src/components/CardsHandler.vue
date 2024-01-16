@@ -6,14 +6,19 @@ import { ref, onBeforeMount, watch } from "vue";
 let currentPage = ref<number>(1);
 let lastPage = ref<number>(0);
 
+let isPageLoading = ref<boolean>(true);
+
 let apiData = ref<object | null>(null);
 
 function fetchData(currentPageP: number): void {
   axios
     .get(`http://localhost:8000/api/projects?page=${currentPageP}`)
-    .then((res: any) => {
+    .then(async (res: any) => {
       apiData.value = res.data.results.data;
       lastPage.value = res.data.results.last_page;
+      await setTimeout(() => {
+        isPageLoading.value = false;
+      }, 500);
     })
     .catch((error: any) => {
       console.error(error);
@@ -48,7 +53,10 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <main class="px-12 py-6 mt-3">
+  <div v-if="isPageLoading" class="absolute select-none top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]">
+    <span class="uppercase drop-shadow-md font-bold text-2xl"> Loading... </span>
+  </div>
+  <main v-show="!isPageLoading" class="px-12 py-6 mt-3">
     <div class="container my-0 mx-auto transition-all duration-200 text-white">
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
         <Card :project="project" v-for="project in apiData" />

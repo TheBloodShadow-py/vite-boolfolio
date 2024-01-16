@@ -7,11 +7,11 @@
         <h1>
           <RouterLink class="text-xl font-bold" to="/">My Boolfolio</RouterLink>
         </h1>
-        <ul class="flex gap-6 font-semibold items-center uppercase">
+        <ul class="sm:flex gap-6 font-semibold items-center uppercase hidden">
           <li>
-            <RouterLink to="/">Rate Project</RouterLink>
+            <RouterLink to="/portfolio">Portfolio</RouterLink>
           </li>
-          <RouterLink to="/">Create Project</RouterLink>
+          <RouterLink to="/contacts">Contacts</RouterLink>
         </ul>
       </div>
     </div>
