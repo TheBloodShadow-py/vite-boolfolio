@@ -24,7 +24,7 @@ const router = createRouter({
       component: PortfolioShow,
     },
     {
-      path: "/contatcs",
+      path: "/contacts",
       name: "contatcs",
       component: Contatcs,
     },

@@ -11,22 +11,18 @@ function showImg() {
   if (isLoading.value) {
     setTimeout(() => {
       isLoading.value = false;
-    }, 500);
+    }, 1000);
   }
-}
-
-function toSlug(str: string) {
-  return str
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/[\s_-]+/g, "-")
-    .replace(/^-+|-+$/g, "");
 }
 </script>
 
 <template>
-  <RouterLink :to="{ name: 'portfolio.show', params: { slug: toSlug(project?.title), project: 'test' } }">
+  <router-link
+    :to="{
+      name: 'portfolio.show',
+      params: { slug: project?.slug },
+    }"
+  >
     <div class="bg-gray-700 cursor-pointer transition-all hover:scale-105 duration-200 flex flex-col gap-6 drop-shadow-lg rounded-md">
       <div v-if="isLoading">
         <div class="relative w-full h-0 pt-[75%]">
@@ -77,5 +73,5 @@ function toSlug(str: string) {
         <span>Type &rightarrowtail; {{ project?.type.name }}</span>
       </div>
     </div>
-  </RouterLink>
+  </router-link>
 </template>

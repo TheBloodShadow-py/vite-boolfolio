@@ -1,4 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+console.log(router);
+</script>
 
 <template>
   <header class="bg-black px-4 py-6 drop-shadow-md">
